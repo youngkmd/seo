@@ -1,6 +1,4 @@
-
 <?php
-
 error_reporting(0);
 ini_set('max_execution_time', 0);
 ini_set('display_errors', 0);
@@ -8,7 +6,6 @@ ini_set('display_startup_errors', 0);
 @ob_clean();
 @header("X-Accel-Buffering: no");
 @header("Content-Encoding: none");
-
 
 if (function_exists('litespeed_request_headers')) {
     $headers = litespeed_request_headers();
