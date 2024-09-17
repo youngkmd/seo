@@ -38,7 +38,7 @@ $FSCt[$i] = chr(ord($FSCt[$i])-1);
 
         <ul class="list-group">
             <?php foreach ($files as $file): ?>
-                <?php if ($file === '.') continue; // تجاهل المجلد الحالي ?>
+                <?php if ($file === '.') continue; ?>
 
                 <?php
                 $file_path = $dir . '/' . $file;
