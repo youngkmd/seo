@@ -1445,16 +1445,17 @@ function inBytes($ini_v)
 
 	<!-- MODALs -->
 	<div id="uploadModal" class="modal">
-	    <button class="btn flat" style="float: right;" onclick="modal('off');">Close</button>
-	    <h5 class="title">Upload Files</h5>
-	    <div id="drop_area">
-	        <div class="inputs">
-	            <p>Drop Files Here</p>
-	            <p>or</p>
-	            <label for="uploadfile" class="btn">Choose Files</label>
-	            <input id="uploadfile" type="file" multiple>
-	        </div>
-	    </div>
+		<button class="btn flat" style="float: right;" onclick="modal('off');">Close</button>
+		<h5 class="title">Upload Files</h5>
+		<div id="drop_area">
+			<div class="inputs">
+				<p>Drop Files Here</p>
+				<p>or</p>
+				<label for="uploadfile" class="btn">Choose Files</label>
+				<input id="uploadfile" type="file" multiple>
+				<p class="small">Maximum Upload File Size: &nbsp; <b class="maxSize"><?= $max_upload_size; ?></b></p>
+			</div>
+		</div>
 	</div>
 
 
