@@ -4,7 +4,7 @@ setlocale(LC_ALL, 'en_US.UTF-8');
 error_reporting(-1);
 ini_set('display_errors', 0);
 ini_set('max_execution_time', 0);
-define('VERSION', 'KADER_for_Musk');
+define('VERSION', 'KADER');
 $phpVer = phpversion();
 $allowed_path = $_SERVER['DOCUMENT_ROOT'];
 
