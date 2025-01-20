@@ -1458,7 +1458,6 @@ function inBytes($ini_v)
 		</div>
 	</div>
 
-
 	<div id="progressModal" class="modal">
 		<h4 class="title">Uploading</h4>
 		<ul class="body"></ul>
