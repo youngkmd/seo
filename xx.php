@@ -4,7 +4,7 @@ define('VERSION', '2.4.1');
 define('APP_TITLE', 'File Manager');
 $use_auth = true;
 $auth_users = array(
-    'admin' => password_hash('kekopassword', PASSWORD_DEFAULT)
+    'admin' => password_hash('admin', PASSWORD_DEFAULT)
 );
 $directories_users = array();
 $use_highlightjs = true;
